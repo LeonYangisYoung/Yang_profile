@@ -1,0 +1,14 @@
+// 获取音频元素和按钮
+const bgm = document.getElementById('bgm');
+const bgmToggle = document.getElementById('bgm-toggle');
+
+// 设置按钮的点击事件
+bgmToggle.addEventListener('click', () => {
+    if (bgm.paused) {
+        bgm.play();
+        bgmToggle.textContent = '暂停音乐';
+    } else {
+        bgm.pause();
+        bgmToggle.textContent = '播放音乐';
+    }
+});
