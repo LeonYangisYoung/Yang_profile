@@ -19,24 +19,28 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    background-image: url('images/background.jpg'); /* 替换为你的背景图片路径 */
+    background-image: url('images/background.jpg'); /* 替换为背景图 */
     background-size: cover;
     background-position: center;
-    filter: brightness(0.6);
+    z-index: -1;
+    filter: brightness(0.6); /* 使背景更暗 */
 }
 
-/* 顶部导航栏 */
+/* 导航栏 */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 3rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
 }
 
-header h1 {
-    font-size: 2rem;
+.site-title {
+    font-size: 1.8rem;
     letter-spacing: 2px;
 }
 
@@ -44,7 +48,7 @@ header nav a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: color 0.3s;
 }
 
@@ -52,30 +56,32 @@ header nav a:hover {
     color: #00acee;
 }
 
-/* 主内容 */
-.main-content {
+/* 主内容区域 */
+.section {
+    padding: 5rem 2rem;
+    text-align: center;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
-    text-align: center;
-    padding: 2rem;
 }
 
-.main-content h2 {
-    font-size: 3rem;
+/* 样式调整 */
+#home h2, #about h2, #projects h2, #skills h2, #contact h2 {
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
-.main-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+#home p, #about p, #projects p, #skills ul, #contact p {
+    font-size: 1.2rem;
     max-width: 600px;
+    margin: 0 auto;
+    color: #d4d4d4;
 }
 
-.main-content button {
-    padding: 10px 20px;
+/* 按钮样式 */
+button {
+    padding: 0.5rem 1.5rem;
     font-size: 1rem;
     border: none;
     color: white;
@@ -85,33 +91,17 @@ header nav a:hover {
     transition: background-color 0.3s;
 }
 
-.main-content button:hover {
+button:hover {
     background-color: #008bbd;
 }
 
-/* 右侧的下载按钮区域 */
-.download-buttons {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.download-buttons a {
-    display: block;
-    padding: 10px 15px;
-    font-size: 1rem;
+/* 页脚 */
+footer {
+    padding: 1.5rem 0;
     text-align: center;
-    background-color: #333;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.download-buttons a:hover {
-    background-color: #444;
+    background-color: rgba(0, 0, 0, 0.9);
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
