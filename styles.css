@@ -23,92 +23,10 @@ body {
     background-size: cover;
     background-position: center;
     z-index: -1;
-    filter: brightness(0.6); /* 使背景更暗 */
+    filter: brightness(0.5); /* 背景稍微暗一点 */
 }
 
 /* 导航栏 */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 3rem;
-    background: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-}
-
-.site-title {
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-}
-
-header nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-header nav a:hover {
-    color: #00acee;
-}
-
-/* 主内容区域 */
-.section {
-    padding: 5rem 2rem;
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* 样式调整 */
-#home h2, #about h2, #projects h2, #skills h2, #contact h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-#home p, #about p, #projects p, #skills ul, #contact p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    color: #d4d4d4;
-}
-
-/* 按钮样式 */
-button {
-    padding: 0.5rem 1.5rem;
-    font-size: 1rem;
-    border: none;
-    color: white;
-    background-color: #00acee;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #008bbd;
-}
-
-/* 页脚 */
-footer {
-    padding: 1.5rem 0;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.9);
-    font-size: 0.9rem;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-
-
-/* 导航栏样式 */
 header {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
@@ -118,12 +36,14 @@ header {
     z-index: 100;
     padding: 1rem 0;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* 导航栏阴影 */
 }
 
+/* 导航栏文字样式 */
 .navbar {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px; /* 导航项之间的间距 */
 }
 
 .nav-item {
@@ -131,23 +51,134 @@ header {
     font-size: 1rem;
     font-weight: bold;
     text-decoration: none;
-    text-transform: uppercase; /* 大写字母 */
+    text-transform: uppercase; /* 全部大写 */
     letter-spacing: 2px; /* 字母间距 */
     transition: color 0.3s;
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.2;
+    display: inline-block;
 }
 
 .nav-item span {
+    display: block;
     font-size: 0.8rem;
     color: #a0a0a0; /* 较淡的颜色 */
 }
 
 .nav-item:hover {
-    color: #00acee; /* 悬停时的颜色 */
+    color: #00acee; /* 鼠标悬停颜色 */
 }
 
 .nav-item:hover span {
-    color: #00acee; /* 悬停时，子文本也改变颜色 */
+    color: #00acee; /* 悬停时子文本颜色 */
 }
 
+/* 主内容区域 */
+.section {
+    padding: 6rem 2rem;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 各部分标题样式 */
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); /* 标题阴影效果 */
+}
+
+.section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #d4d4d4;
+    line-height: 1.6;
+}
+
+/* 项目列表样式 */
+#projects ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+#projects li {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 项目阴影效果 */
+}
+
+#projects h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+#projects p {
+    font-size: 1rem;
+    color: #cccccc;
+}
+
+/* 技能列表样式 */
+#skills ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+#skills li {
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+}
+
+/* 页脚样式 */
+footer {
+    padding: 1.5rem 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* 按钮样式（如果有按钮的话） */
+button {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    color: white;
+    background-color: #00acee;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #008bbd;
+    transform: scale(1.05); /* 悬停放大效果 */
+}
+
+/* 视差效果和动画（可选） */
+.section {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
