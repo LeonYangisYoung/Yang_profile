@@ -105,3 +105,49 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+
+
+/* 导航栏样式 */
+header {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-item {
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase; /* 大写字母 */
+    letter-spacing: 2px; /* 字母间距 */
+    transition: color 0.3s;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.nav-item span {
+    font-size: 0.8rem;
+    color: #a0a0a0; /* 较淡的颜色 */
+}
+
+.nav-item:hover {
+    color: #00acee; /* 悬停时的颜色 */
+}
+
+.nav-item:hover span {
+    color: #00acee; /* 悬停时，子文本也改变颜色 */
+}
+
