@@ -2,6 +2,12 @@
 const bgm = document.getElementById('bgm');
 const bgmToggle = document.getElementById('bgm-toggle');
 
+"D:\CloudMusic\resource\VipSongsDownload\塞壬唱片-MSR - 前航远歌.ncm"
+
+
+
+
+
 // 设置按钮的点击事件
 bgmToggle.addEventListener('click', () => {
     if (bgm.paused) {
