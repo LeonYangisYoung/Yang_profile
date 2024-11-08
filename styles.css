@@ -172,6 +172,17 @@ button:hover {
     animation: fadeIn 1.5s ease-in-out;
 }
 
+.about-image {
+    width: 50%; /* 图片占容器宽度的 50% */
+    max-width: 400px; /* 最大宽度为 400px，防止过大 */
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
 @keyframes fadeIn {
     from {
         opacity: 0;
