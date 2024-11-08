@@ -182,6 +182,24 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.footer-text {
+    position: fixed; /* 固定在页面底部 */
+    bottom: 10px; /* 距离底部的位置 */
+    width: 100%; /* 占满宽度 */
+    text-align: center; /* 居中对齐 */
+    font-size: 1.2rem; /* 字体大小，可根据需要调整 */
+    color: rgba(255, 255, 255, 0.5); /* 半透明白色 */
+    font-weight: bold;
+    letter-spacing: 2px; /* 增加字母间距 */
+    font-family: 'Arial', sans-serif; /* 字体，可根据需要调整 */
+    text-transform: uppercase; /* 全部大写 */
+    z-index: 10; /* 确保在其他内容上层 */
+    pointer-events: none; /* 让文本不可点击 */
+}
+
+
+
+
 
 @keyframes fadeIn {
     from {
