@@ -2,7 +2,9 @@
 const bgm = document.getElementById('bgm');
 const bgmToggle = document.getElementById('bgm-toggle');
 
-"D:\CloudMusic\resource\VipSongsDownload\塞壬唱片-MSR - 前航远歌.ncm"
+<!-- Spotify 嵌入播放 -->
+<iframe src="https://open.spotify.com/embed/playlist/https://open.spotify.com/track/46dLglMF9ginPDV3xCmhJc?si=442c09887efa46d7" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
 
 
 
