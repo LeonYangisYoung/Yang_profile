@@ -198,6 +198,15 @@ button:hover {
 }
 
 
+.fade-in-image {
+    opacity: 0; /* 初始透明 */
+    transition: opacity 2s ease-in-out; /* 渐变效果，2秒内完成 */
+}
+
+.fade-in-image.visible {
+    opacity: 1; /* 最终显示 */
+}
+
 
 
 
