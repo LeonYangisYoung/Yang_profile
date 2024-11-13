@@ -33,3 +33,4 @@ function displayRandomQuote() {
     document.getElementById("random-quote").innerText = randomQuote;
 }
 
+window.onload = displayRandomQuote;
