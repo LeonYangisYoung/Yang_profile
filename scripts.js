@@ -3,7 +3,6 @@
 // 示例功能：当页面加载时，显示一个欢迎提示
 window.onload = function() {
     alert("欢迎来到杨的个人网站！网站依旧在开发中，不代表最终品质。");
-};
 
     displayRandomQuote();
 };
@@ -33,4 +32,8 @@ const quotes = [
     const randomIndex = Math.floor(Math.random() * quotes.length); // 随机选择索引
     const randomQuote = quotes[randomIndex]; // 取出随机句子
     document.getElementById("random-quote").innerText = randomQuote;
+        if (quoteElement) {
+        quoteElement.innerText = randomQuote;
+        quoteElement.style.fontStyle = "italic"; // 将文本样式设置为斜体
+    }
 }
