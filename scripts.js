@@ -33,5 +33,3 @@ function displayRandomQuote() {
     document.getElementById("random-quote").innerText = randomQuote;
 }
 
-// 页面加载时初始化一句随机句子
-window.onload = displayRandomQuote;
