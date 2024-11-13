@@ -5,6 +5,8 @@ window.onload = function() {
     alert("欢迎来到杨的个人网站！网站依旧在开发中，不代表最终品质。");
 };
 
+    displayRandomQuote();
+};
 
 // 句子列表
 const quotes = [
