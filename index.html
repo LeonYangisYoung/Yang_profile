@@ -86,10 +86,15 @@ const quotes = [
     "I hear it from no one, It occur to me the old world, It may have said no word, But I have to keep knowing."
 ];
 
-function displayRandomQuote() {
+
+    function displayRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const randomQuote = quotes[randomIndex];
-    document.getElementById("random-quote").innerText = randomQuote;
+    const quoteElement = document.getElementById("random-quote");
+    quoteElement.innerText = randomQuote;
+    quoteElement.style.fontStyle = "italic"; // 将文本样式设置为斜体
+}
+
 }
 </script>
 
@@ -132,8 +137,8 @@ function displayRandomQuote() {
         
         <p>微信Wechat:Ashes_here_we_go</p>
         <p>小红书和抖音账号正在建设中...</p>
-<p>                                     <p>
-<p>                                     <p>
+<p>                 .                    <p>
+<p>                                   <p>
         <p>往日辉煌，暗淡如常。今时灵光，起源之梁。<p>
     </section>
 <img src="download.jpg" alt="个人图片" class="profile-image">
