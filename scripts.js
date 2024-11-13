@@ -32,5 +32,3 @@ function displayRandomQuote() {
     const randomQuote = quotes[randomIndex]; // 取出随机句子
     document.getElementById("random-quote").innerText = randomQuote;
 }
-
-window.onload = displayRandomQuote;
