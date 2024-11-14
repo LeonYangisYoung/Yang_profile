@@ -22,6 +22,7 @@ const quotes = [
 
 // 随机显示句子的函数
 function displayRandomQuote() {
+     console.log("displayRandomQuote 已执行");
     const randomIndex = Math.floor(Math.random() * quotes.length); // 随机选择索引
     const randomQuote = quotes[randomIndex]; // 取出随机句子
     document.getElementById("random-quote").innerText = randomQuote;
