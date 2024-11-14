@@ -1,6 +1,5 @@
 // scripts.java
 
-// 示例功能：当页面加载时，显示一个欢迎提示
 window.onload = function() {
     alert("欢迎来到杨的个人网站！网站依旧在开发中，不代表最终品质。");
 
@@ -8,7 +7,7 @@ window.onload = function() {
 };
 
 
-random-quote = [
+const quotes = [
     "I’ve become your shadow, your misery was mine",
     
     "I want a tooth for a tooth
