@@ -51,7 +51,7 @@
         <h2>欢迎来到Leon Yang的个人网站</h2>
         <p>我是北美大学IT专业的学生，热衷于研究数字媒体与数码科技。</p>
         <p>个人网站: <a href="https://leonyangisyoung.github.io/Yang_profile/#home">leonyangisyoung.github.io/Yang_profile/#home</a></p>
-        <p id="random-quote"></p>
+        <p id="random-quote"></p> <!-- 用于显示随机句子的部分 -->
     </section>
 
     <!-- 关于我 -->
@@ -95,40 +95,20 @@
 
     <!-- 引入 JavaScript -->
     <script src="scripts.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>粒子动画效果</title>
-    <style>
-        body { margin: 0; }
-        canvas { display: block; }
-    </style>
-</head>
-<body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // 创建场景、相机和渲染器
+        // 粒子动画的 JavaScript 代码
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // 粒子几何体和材质
         const particles = new THREE.BufferGeometry();
         const particleCount = 500;
         const positions = [];
         for (let i = 0; i < particleCount * 3; i++) {
-            positions.push((Math.random() - 0.5) * 10); // 随机位置
+            positions.push((Math.random() - 0.5) * 10);
         }
         particles.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
 
@@ -138,43 +118,15 @@
 
         camera.position.z = 5;
 
-        // 动画函数
         function animate() {
             requestAnimationFrame(animate);
-            particleSystem.rotation.y += 0.01; // 旋转粒子系统
+            particleSystem.rotation.y += 0.01;
             renderer.render(scene, camera);
         }
         animate();
     </script>
 </body>
 </html>
-
-
-<img src="images/your-image.jpg" alt="描述" class="fade-in-image">
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>随机句子展示</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>欢迎来到我的个人网站</h1>
-
-    <!-- 随机句子展示区域 -->
-    <p id="random-quote"></p>
-
-    <!-- 引入 JavaScript -->
-    <script src="scripts.js"></script>
-</body>
-</html>
-
-
-
-
 
 
 
