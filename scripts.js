@@ -16,7 +16,6 @@ const quotes = [
     It occur to me the old world,
     It may have said no word,
     But I have to keep knowing.`
-        
 ];
 
 // 随机显示句子的函数
