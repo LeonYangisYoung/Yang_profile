@@ -208,6 +208,12 @@ button:hover {
 }
 
 
+#random-quote {
+    font-style: italic; /* 使文本斜体显示 */
+    margin-top: 20px; /* 给文本和上方内容之间留一些空间 */
+    color: #888; /* 颜色可以根据需要调整 */
+}
+
 
 
 @keyframes fadeIn {
