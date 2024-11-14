@@ -8,7 +8,7 @@ window.onload = function() {
 };
 
 
-const quotes = [
+random-quote = [
     "I’ve become your shadow, your misery was mine",
     
     "I want a tooth for a tooth
