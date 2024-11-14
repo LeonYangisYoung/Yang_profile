@@ -1,7 +1,7 @@
 // scripts.js
 
 window.onload = function() {
-console.log("页面加载完成！");
+console.log(""scripts.js页面加载完成！");
     
     alert("欢迎来到杨的个人网站！网站依旧在开发中，不代表最终品质。");
 
