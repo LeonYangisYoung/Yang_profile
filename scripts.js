@@ -1,7 +1,7 @@
 // scripts.js
 
 window.onload = function() {
-console.log(""scripts.js页面加载完成！");
+console.log("scripts.js页面加载完成！");
      console.log("window.onload 已执行");
     alert("欢迎来到杨的个人网站！网站依旧在开发中，不代表最终品质。");
 
@@ -26,4 +26,4 @@ function displayRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length); // 随机选择索引
     const randomQuote = quotes[randomIndex]; // 取出随机句子
     document.getElementById("random-quote").innerText = randomQuote;
-  
+}
