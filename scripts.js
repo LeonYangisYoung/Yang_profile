@@ -14,10 +14,10 @@ const quotes = [
     "I want a tooth for a tooth, I want an eye for an eye.",
     "I need a head I can hold up, I need the nickel and iron.",
     "By pulling me down, pulling me down. Burn me to the ground.",
-    "I hear it from no one,
+    `I hear it from no one,
     It occur to me the old world,
     It may have said no word,
-    But I have to keep knowing."
+    But I have to keep knowing.`
      "All I see is illusion it’s all illusion it’s all illusion
      All I am is illusion it’s all illusion it’s all illusion"
 "I’ve seen the highest high
