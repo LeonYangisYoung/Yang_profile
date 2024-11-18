@@ -133,6 +133,40 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Down 动画提示</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 网页内容 -->
+    <div style="height: 2000px; background-color: black;">
+        <h1 style="color: white; text-align: center; padding-top: 50px;">欢迎来到我的网页</h1>
+    </div>
+
+    <!-- Scroll Down 提示 -->
+    <div class="scroll-down">
+        <span class="arrow"></span>
+        <p>Scroll Down</p>
+    </div>
+
+    <script>
+        // 自动隐藏 Scroll Down 提示
+        document.addEventListener("scroll", function () {
+            const scrollDown = document.querySelector(".scroll-down");
+            if (window.scrollY > 300) {
+                scrollDown.style.display = "none"; // 隐藏提示
+            } else {
+                scrollDown.style.display = "block"; // 显示提示
+            }
+        });
+    </script>
+</body>
+</html>
+
 
 
 
