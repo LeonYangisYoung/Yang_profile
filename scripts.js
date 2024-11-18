@@ -21,6 +21,7 @@ const quotes = [
     "I’ve seen the highest high when I’m down in the lowest low.",
     "I’m out of sight in the darkest night, where my faith is overthrown, but I won’t let it reign over my mind.",
     "I’m due for a miracle"
+    "I TAKE ALL YOUR DEEP CUTS I TAKE IT ALL."
 ];
 
 // 随机显示句子的函数
