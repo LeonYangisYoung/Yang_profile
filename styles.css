@@ -226,3 +226,64 @@ button:hover {
         transform: translateY(0);
     }
 }
+
+/* Scroll Down 提示样式 */
+.scroll-down {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    animation: fade-in 2s ease-in-out infinite;
+    z-index: 1000;
+}
+
+.scroll-down .arrow {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(45deg);
+    margin: 0 auto;
+    animation: bounce 1.5s infinite;
+}
+
+.scroll-down p {
+    font-size: 14px;
+    color: white;
+    margin-top: 5px;
+    font-family: Arial, sans-serif;
+    animation: fade-in-text 2s ease-in-out infinite;
+}
+
+/* 动画效果 */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    50% {
+        transform: translateY(10px) rotate(45deg);
+    }
+}
+
+@keyframes fade-in {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-text {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+
+
