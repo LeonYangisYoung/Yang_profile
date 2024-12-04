@@ -12,7 +12,7 @@ const quotes = [
     "I’ve become your shadow, your misery was mine.",
     "I want a tooth for a tooth, I want an eye for an eye.",
     "I need a head I can hold up, I need the nickel and iron.",
-    "By pulling me down, pulling me down. Burn me to the ground.",
+    "By pulling me down, pulling me down, burn me to the ground.",
     `I hear it from no one,
     It occur to me the old world,
     It may have said no word,
@@ -22,6 +22,8 @@ const quotes = [
     "I’m out of sight in the darkest night, where my faith is overthrown, but I won’t let it reign over my mind.",
     "I’m due for a miracle",
     "I TAKE ALL YOUR DEEP CUTS I TAKE IT ALL."
+    "So give me a reason, to prove me wrong, to wash this memory clean."
+    "Mission sub rosa, concealed en umbra."
 ];
 
 // 随机显示句子的函数
