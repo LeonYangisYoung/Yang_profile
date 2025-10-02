@@ -21,6 +21,8 @@ const quotes = [
     "I’ve seen the highest high when I’m down in the lowest low.",
     "I’m out of sight in the darkest night, where my faith is overthrown, but I won’t let it reign over my mind.",
     "I’m due for a miracle",
+    "When dark meets the light,It burns like the sun.",
+    "Nobody knows what's inside of me",
     "I TAKE ALL YOUR DEEP CUTS I TAKE IT ALL.",
     "So give me a reason, to prove me wrong, to wash this memory clean.",
     "Mission sub rosa, concealed en umbra."
