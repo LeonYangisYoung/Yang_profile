@@ -4,188 +4,175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人介绍网站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 粒子动画画布 -->
-    <canvas id="particleCanvas"></canvas>
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+    <div class="background-overlay" aria-hidden="true"></div>
 
-    <!-- 全屏背景 -->
-    <div class="fullscreen-bg"></div>
-
-    <!-- 音乐播放列表 -->
-    <div class="music-gallery">
-        <div class="music-item">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1gk6N00YIaiM1YTfrSS5tM?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <div class="music-item">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3ev6XUmO76xaCVEYQEJphv?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <div class="music-item">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/46dLglMF9ginPDV3xCmhJc?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <div class="music-item">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0mdmKebVEP6sU8ZJajZDtP?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-    </div>
-
-    
-    <!-- 页脚 -->
-    <div class="footer-text">
-        A WORLD FAMILIARLY UNKNOWN
-    </div>
-
-    
-    <!-- 导航栏 -->
     <header>
         <nav class="navbar">
-            <a href="#home" class="nav-item">INDEX<br><span>首页</span></a>
-            <a href="#about" class="nav-item">ABOUT<br><span>关于我</span></a>
-            <a href="#works" class="nav-item">WORKS<br><span>作品集</span></a>
-            <a href="#skills" class="nav-item">SKILLS<br><span>技能</span></a>
-            <a href="#contact" class="nav-item">CONTACT<br><span>联系我</span></a>
+            <a href="#home" class="nav-item" data-nav="home">INDEX<span>首页</span></a>
+            <a href="#about" class="nav-item" data-nav="about">ABOUT<span>关于我</span></a>
+            <a href="#works" class="nav-item" data-nav="works">WORKS<span>作品集</span></a>
+            <a href="#skills" class="nav-item" data-nav="skills">SKILLS<span>技能</span></a>
+            <a href="#contact" class="nav-item" data-nav="contact">CONTACT<span>联系我</span></a>
         </nav>
     </header>
 
+    <main>
+        <section id="home" class="section hero" data-animate>
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="hero-content">
+                <p class="eyebrow">INTERACTIVE MEDIA • CREATIVE CODE • IMMERSIVE WEB</p>
+                <h1 class="hero-title">
+                    <span class="title-line">欢迎来到 <strong>Leon Yang</strong> 的宇宙</span>
+                    <span class="title-line" aria-hidden="true">Welcome to my kinetic web playground.</span>
+                </h1>
+                <p class="hero-description">我在多伦多大学 CCIT 学习，用设计、代码和声音打造沉浸式体验。这里展示我对未来界面、实验动画与互动叙事的探索。</p>
+                <div class="hero-actions">
+                    <a class="button primary" href="#works">观看作品</a>
+                    <a class="button ghost" href="#contact">预约交流</a>
+                </div>
+                <p id="random-quote" class="hero-quote" aria-live="polite"></p>
+            </div>
+        </section>
 
-    
-    <!-- 首页内容 -->
-    <section id="home" class="section">
+        <section id="about" class="section" data-animate>
+            <div class="section-heading">
+                <h2>关于我</h2>
+                <p>从数字艺术到交互叙事，我的灵感来自科技与情绪之间的张力。</p>
+            </div>
+            <div class="about-grid">
+                <article class="about-card">
+                    <h3>背景</h3>
+                    <p>目前在多伦多大学（University of Toronto）主修传播、文化与信息科技（CCIT）。我专注于把抽象的想法通过原型、视觉和代码变成可体验的界面。</p>
+                </article>
+                <article class="about-card">
+                    <h3>愿景</h3>
+                    <p>我坚信网页不仅是信息展示，更是多感官的舞台。因此我不断尝试粒子、声音和滚动叙事等技术，让每一次访问都像进入新世界。</p>
+                </article>
+                <figure class="about-media">
+                    <img src="OIP.jpg" alt="University of Toronto 标志" class="about-image">
+                    <img src="CCIT.jpg" alt="CCIT Program" class="about-image secondary">
+                </figure>
+            </div>
+        </section>
 
-        <h2>欢迎来到Leon Yang的个人网站</h2>
-        <p>Hi, I’m Yang — 一个在多伦多大学读 CCIT 的学生。
-    我喜欢把技术变成体验，把想法变成可以触摸的东西。
-    目前主要在做网页开发、交互设计和数字媒体，偶尔也会写点代码、做点沉浸式小实验。
-    我相信设计不仅是“好看”，更是“好用、好玩，也好记住”。
-    欢迎来看看我的作品，也欢迎来聊聊你的想法。</p>
-        
-        <p id="random-quote"></p> <!-- 用于显示随机句子的部分 -->
-    </section>
+        <section id="works" class="section" data-animate>
+            <div class="section-heading">
+                <h2>观看我的视频</h2>
+                <p>探索我在动效叙事与沉浸式媒体方面的尝试。</p>
+            </div>
+            <div class="video-frame">
+                <video width="960" height="540" controls preload="metadata" class="video-player">
+                    <source src="basepoint.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+        </section>
 
+        <section id="skills" class="section" data-animate>
+            <div class="section-heading">
+                <h2>技能矩阵</h2>
+                <p>跨领域的技能组合让我能独立完成体验设计的整个流程。</p>
+            </div>
+            <div class="skills-grid">
+                <article class="skill-card">
+                    <h3>前端体验</h3>
+                    <ul>
+                        <li>HTML / CSS / JavaScript 动态界面</li>
+                        <li>交互动效、响应式布局</li>
+                        <li>WebGL / Three.js 视觉实验</li>
+                    </ul>
+                </article>
+                <article class="skill-card">
+                    <h3>设计叙事</h3>
+                    <ul>
+                        <li>UI/UX 策略与快速原型（Figma, Adobe XD）</li>
+                        <li>视觉品牌、动态版式</li>
+                        <li>跨文化故事化表达</li>
+                    </ul>
+                </article>
+                <article class="skill-card">
+                    <h3>多媒体探索</h3>
+                    <ul>
+                        <li>声音设计与音乐混合</li>
+                        <li>视频剪辑与后期</li>
+                        <li>实验性交互装置概念</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
 
-    
-    <!-- 关于我 -->
-    <section id="about" class="section">
-        <h2>关于我</h2>
-        <p>我目前在多伦多大学(University of Toronto)就读，专攻IT。对研究数字媒体与信息技术以及新技术应用充满热情，并期待未来的先进科技。</p>
-        <img src="OIP.jpg" alt="University of Toronto Logo" class="about-image">
-        <img src="CCIT.jpg" alt"about-image">
-    </section>
+        <section class="section music" data-animate>
+            <div class="section-heading">
+                <h2>聆听灵感播放列表</h2>
+                <p>这些曲目伴随我设计和写代码，它们也驱动着网站的节奏。</p>
+            </div>
+            <div class="music-gallery">
+                <div class="music-item">
+                    <iframe title="Spotify track 1" src="https://open.spotify.com/embed/track/1gk6N00YIaiM1YTfrSS5tM?utm_source=generator" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+                <div class="music-item">
+                    <iframe title="Spotify track 2" src="https://open.spotify.com/embed/track/3ev6XUmO76xaCVEYQEJphv?utm_source=generator" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+                <div class="music-item">
+                    <iframe title="Spotify track 3" src="https://open.spotify.com/embed/track/46dLglMF9ginPDV3xCmhJc?utm_source=generator" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+                <div class="music-item">
+                    <iframe title="Spotify track 4" src="https://open.spotify.com/embed/track/0mdmKebVEP6sU8ZJajZDtP?utm_source=generator" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
 
-
-    
-    <!-- 项目经历 -->
- <section id="works" class="section">
-    <h2>观看我的视频</h2>
-    <video width="960" height="540" controls>
-        <source src="basepoint.mp4" type="video/mp4">
-        您的浏览器不支持视频播放。
-    </video>
-</section>
-
-
-
-    <!-- 技能 -->
-    <section id="skills" class="section">
-        <h2>技能</h2>
-        <ul>
-            <li>HTML/CSS”、“UI/UX设计 Adobe XD”</li>
-            <li>英语和中文双语言使用</li>
-            <li>编程基础 (Python)</li>
-        </ul>
-    </section>
-
-
-    
-    <!-- 联系我 -->
-    <section id="contact" class="section">
-        <h2>联系我</h2>
-        <p>谷歌邮箱：leonmon3ter@gmail.com</p>
-        <p>微信Wechat: Ashes_here_we_go</p>
-        <p>在社交媒体上关注我:<p>
-        <p>个人网站: <a href="https://leonyangisyoung.github.io/Yang_profile/#home">leonyangisyoung.github.io/Yang_profile/#home</p>
-        <p>往日辉煌，暗淡如常。今日灵光，起源之梁。</p>
-        <img src="dg.jpg" alt="utm Logo" class="about-image">
-    </section>
+        <section id="contact" class="section" data-animate>
+            <div class="section-heading">
+                <h2>联系我</h2>
+                <p>聊聊合作、创意或任何与你好奇心有关的事情。</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>触达渠道</h3>
+                    <ul>
+                        <li>邮箱：<a href="mailto:leonmon3ter@gmail.com">leonmon3ter@gmail.com</a></li>
+                        <li>微信：Ashes_here_we_go</li>
+                        <li>个人网站：<a href="https://leonyangisyoung.github.io/Yang_profile/#home" target="_blank" rel="noopener">leonyangisyoung.github.io</a></li>
+                    </ul>
+                    <p class="contact-quote">往日辉煌，暗淡如常。今日灵光，起源之梁。</p>
+                </div>
+                <div class="contact-card map-card">
+                    <h3>我常出现的坐标</h3>
+                    <p>University of Toronto Mississauga</p>
+                    <div class="map-wrap">
+                        <iframe title="University of Toronto Mississauga map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.803532893118!2d-79.6622492238535!3d43.54711025951147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b469dc8a5fbf1%3A0xb47b5cc6fde93590!2sUniversity%20of%20Toronto%20Mississauga!5e0!3m2!1sen!2sca!4v1731350000000" width="100%" height="230" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <figure class="contact-media">
+                    <img src="dg.jpg" alt="UTM 校园夜景" class="about-image">
+                </figure>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>© 2024 Yang的个人网站</p>
+        <p>© 2024 Yang 的个人网站</p>
     </footer>
 
-
-
-
-
-    
-    <!-- 引入 JavaScript -->
-    <script src="scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // 粒子动画的 JavaScript 代码
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        const particles = new THREE.BufferGeometry();
-        const particleCount = 500;
-        const positions = [];
-        for (let i = 0; i < particleCount * 3; i++) {
-            positions.push((Math.random() - 0.5) * 10);
-        }
-        particles.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-
-        const particleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
-        const particleSystem = new THREE.Points(particles, particleMaterial);
-        scene.add(particleSystem);
-
-        camera.position.z = 5;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            particleSystem.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
-</body>
-</html>
-
-
-
-    <!-- Scroll Down 提示 -->
-    <div class="scroll-down">
+    <div class="scroll-down" data-scroll-hint>
         <span class="arrow"></span>
         <p>Scroll Down</p>
     </div>
 
-    <script>
-        // 自动隐藏 Scroll Down 提示
-      //   document.addEventListener("scroll", function () {
-         //    const scrollDown = document.querySelector(".scroll-down");
-       //      if (window.scrollY > 300) {
-         //        scrollDown.style.display = "none"; // 隐藏提示
-        //     } else {
-        //         scrollDown.style.display = "block"; // 显示提示
-    //         }
-     //    });
-    </script>
+    <div id="welcome-toast" class="toast" role="status" aria-live="polite">
+        欢迎来到我的动态世界！网站仍在迭代中，感谢你的探索。
+        <button type="button" class="toast-close" aria-label="关闭提示">×</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" integrity="sha512-3gA6i/K3PaY7MXm0X3NeSwwPAo6LQR8mI+lcYedgTwxSWJnjDzo07FiI/xDfr7dLhrQHu2X0i6WiZpUKoZXfFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
-
-  <section class="card">
-        <h2>Location</h2>
-        <p>Usually around University of Toronto Mississauga.</p>
-        <!-- Simple Google Maps embed -->
-        <div class="map-wrap">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.803532893118!2d-79.6622492238535!3d43.54711025951147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b469dc8a5fbf1%3A0xb47b5cc6fde93590!2sUniversity%20of%20Toronto%20Mississauga!5e0!3m2!1sen!2sca!4v1731350000000"
-                width="100%" height="230" style="border:0;" allowfullscreen=""
-                loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
-
-
-

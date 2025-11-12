@@ -1,4 +1,16 @@
-/* 全局设置 */
+:root {
+    --bg: #040509;
+    --surface: rgba(10, 12, 21, 0.6);
+    --primary: #68f1ff;
+    --accent: #ff4dbe;
+    --text: #e9ecff;
+    --muted: rgba(233, 236, 255, 0.72);
+    --outline: rgba(104, 241, 255, 0.18);
+    --shadow: 0 20px 60px rgba(6, 12, 45, 0.55);
+    --blur: 18px;
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,258 +18,624 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    color: white;
-    background-color: #121212;
+    font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    background: radial-gradient(circle at 20% 20%, rgba(94, 227, 255, 0.12), transparent 55%),
+                radial-gradient(circle at 80% 0%, rgba(255, 77, 190, 0.14), transparent 55%),
+                linear-gradient(160deg, #02030a 0%, #050b1f 40%, #03030c 100%);
+    color: var(--text);
+    min-height: 100vh;
     overflow-x: hidden;
+    letter-spacing: 0.02em;
 }
 
-/* 全屏背景 */
-.fullscreen-bg {
+body::after {
+    content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/background.jpg'); /* 替换为背景图 */
-    background-size: cover;
-    background-position: center;
+    inset: 0;
+    background: url('defy.jpg') center / cover no-repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: -4;
+}
+
+.background-overlay {
+    position: fixed;
+    inset: 0;
+    background: conic-gradient(from 0deg at 50% 50%, rgba(104, 241, 255, 0.04), rgba(255, 77, 190, 0.08), rgba(104, 241, 255, 0.12), rgba(104, 241, 255, 0.04));
+    animation: gradientShift 16s linear infinite;
     z-index: -2;
-    filter: brightness(0.5); /* 背景稍微暗一点 */
+    pointer-events: none;
 }
 
-/* 导航栏 */
+#particleCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -3;
+    pointer-events: none;
+}
+
 header {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
-    padding: 1rem 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* 导航栏阴影 */
+    width: 100%;
+    padding: 1.4rem clamp(1.2rem, 5vw, 3rem);
+    z-index: 10;
+    backdrop-filter: blur(var(--blur));
+    background: linear-gradient(120deg, rgba(5, 9, 21, 0.75), rgba(5, 9, 21, 0.35));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* 导航栏文字样式 */
 .navbar {
-    display: flex;
-    justify-content: center;
-    gap: 40px; /* 导航项之间的间距 */
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 1rem;
+    justify-items: center;
 }
 
 .nav-item {
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
+    position: relative;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
     text-decoration: none;
-    text-transform: uppercase; /* 全部大写 */
-    letter-spacing: 2px; /* 字母间距 */
-    transition: color 0.3s;
-    text-align: center;
-    line-height: 1.2;
-    display: inline-block;
+    color: var(--muted);
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    transition: color 0.3s ease, transform 0.4s ease, background 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
 }
 
 .nav-item span {
-    display: block;
-    font-size: 0.8rem;
-    color: #a0a0a0; /* 较淡的颜色 */
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    opacity: 0.8;
 }
 
-.nav-item:hover {
-    color: #00acee; /* 鼠标悬停颜色 */
+.nav-item::after {
+    content: "";
+    position: absolute;
+    inset: auto 18% -6px 18%;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0;
+    transform: scaleX(0.2);
+    transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.nav-item:hover span {
-    color: #00acee; /* 悬停时子文本颜色 */
+.nav-item:hover,
+.nav-item:focus-visible {
+    color: var(--text);
+    background: rgba(104, 241, 255, 0.08);
+    transform: translateY(-2px);
 }
 
-/* 主内容区域 */
+.nav-item:hover::after,
+.nav-item:focus-visible::after,
+.nav-item.is-active::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.nav-item.is-active {
+    color: var(--text);
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
 .section {
-    padding: 6rem 2rem;
-    text-align: center;
+    position: relative;
     min-height: 100vh;
+    padding: clamp(5rem, 12vh, 10rem) clamp(1.5rem, 8vw, 10rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    opacity: 0;
+    transform: translateY(80px) scale(0.98);
+    transition: opacity 0.9s cubic-bezier(0.16, 0.84, 0.44, 1), transform 0.9s cubic-bezier(0.16, 0.84, 0.44, 1);
 }
 
-/* 各部分标题样式 */
-.section h2 {
-    font-size: 2.5rem;
+.section.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 12% 4% auto 4%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+    opacity: 0.4;
+}
+
+.section-heading {
+    max-width: 720px;
+}
+
+.section-heading h2 {
+    font-size: clamp(2.6rem, 4vw, 3.6rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     margin-bottom: 1rem;
-    color: #ffffff;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); /* 标题阴影效果 */
 }
 
-.section p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    color: #d4d4d4;
-    line-height: 1.6;
+.section-heading p {
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: var(--muted);
+    line-height: 1.8;
 }
 
-/* 项目列表样式 */
-#projects ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 1.5rem;
+.hero {
+    align-items: center;
+    text-align: left;
 }
 
-#projects li {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 项目阴影效果 */
+.hero-content {
+    position: relative;
+    max-width: 860px;
+    padding: clamp(2rem, 6vw, 3.8rem);
+    background: linear-gradient(135deg, rgba(10, 16, 30, 0.72), rgba(10, 16, 30, 0.35));
+    border-radius: 28px;
+    border: 1px solid var(--outline);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(var(--blur));
+    overflow: hidden;
 }
 
-#projects h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #ffffff;
+.hero-content::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(255, 77, 190, 0.25), transparent 55%);
+    mix-blend-mode: screen;
+    opacity: 0.8;
+    pointer-events: none;
 }
 
-#projects p {
-    font-size: 1rem;
-    color: #cccccc;
+.hero-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    background: radial-gradient(circle at 20% 20%, rgba(104, 241, 255, 0.35), transparent 65%),
+                radial-gradient(circle at 80% 40%, rgba(255, 77, 190, 0.18), transparent 60%);
+    filter: blur(60px);
+    z-index: -1;
+    animation: pulseGlow 10s ease-in-out infinite;
 }
 
-/* 技能列表样式 */
-#skills ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 1rem;
+.eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.38em;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
 }
 
-#skills li {
-    font-size: 1.1rem;
-    padding: 0.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
+.hero-title {
+    font-size: clamp(2.8rem, 4vw, 4.2rem);
+    line-height: 1.15;
+    display: grid;
+    gap: 0.8rem;
 }
 
-/* 页脚样式 */
-footer {
-    padding: 1.5rem 0;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.9);
+.hero-title strong {
+    color: var(--primary);
+    text-shadow: 0 0 28px rgba(104, 241, 255, 0.65);
+}
+
+.title-line {
+    display: inline-block;
+    animation: titleFloat 9s ease-in-out infinite;
+}
+
+.hero-description {
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    color: var(--muted);
+    max-width: 640px;
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.9rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, color 0.35s ease, border 0.35s ease;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.button.primary {
+    background: linear-gradient(120deg, var(--primary), rgba(104, 241, 255, 0.35));
+    color: #011118;
+    box-shadow: 0 14px 35px rgba(104, 241, 255, 0.35);
+}
+
+.button.ghost {
+    border-color: rgba(104, 241, 255, 0.45);
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.button:hover,
+.button:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 45px rgba(104, 241, 255, 0.45);
+}
+
+.button:hover::before,
+.button:focus-visible::before {
+    opacity: 1;
+}
+
+.hero-quote {
+    margin-top: 1.6rem;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.9rem;
-    color: #a0a0a0;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.65);
+    position: relative;
 }
 
-/* 按钮样式（如果有按钮的话） */
-button {
-    padding: 0.5rem 1.5rem;
+.hero-quote::before {
+    content: "❝";
+    position: absolute;
+    left: -1.2rem;
+    top: -0.3rem;
+    color: var(--accent);
+    opacity: 0.55;
+}
+
+.about-grid,
+.skills-grid,
+.music-gallery,
+.contact-grid {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.about-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: stretch;
+}
+
+.about-card,
+.skill-card,
+.contact-card {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: clamp(1.6rem, 3vw, 2.4rem);
+    backdrop-filter: blur(var(--blur));
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card::after,
+.skill-card::after,
+.contact-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(140deg, rgba(104, 241, 255, 0.12), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.about-card:hover::after,
+.skill-card:hover::after,
+.contact-card:hover::after {
+    opacity: 1;
+}
+
+.about-card h3,
+.skill-card h3,
+.contact-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 1.1rem;
+    letter-spacing: 0.08em;
+}
+
+.about-card p,
+.skill-card li,
+.contact-card p,
+.contact-card li {
+    color: var(--muted);
+    line-height: 1.75;
     font-size: 1rem;
-    border: none;
-    color: white;
-    background-color: #00acee;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
 }
 
-button:hover {
-    background-color: #008bbd;
-    transform: scale(1.05); /* 悬停放大效果 */
+.skill-card ul,
+.contact-card ul {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
 }
 
-/* 视差效果和动画（可选） */
-.section {
-    animation: fadeIn 1.5s ease-in-out;
+.about-media {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
 }
 
 .about-image {
-    width: 50%; /* 图片占容器宽度的 50% */
-    max-width: 400px; /* 最大宽度为 400px，防止过大 */
-    height: auto;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow);
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.about-image.secondary {
+    opacity: 0.9;
+    filter: saturate(1.2) hue-rotate(12deg);
+}
+
+.about-image:hover {
+    transform: translateY(-6px) scale(1.02);
+    filter: brightness(1.08);
+}
+
+.video-frame {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: var(--shadow);
+}
+
+.video-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(104, 241, 255, 0.25);
+    border-radius: 28px;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+.video-player {
     display: block;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: auto;
+    background: rgba(0, 0, 0, 0.4);
 }
 
-.footer-text {
-    position: fixed; /* 固定在页面底部 */
-    bottom: 10px; /* 距离底部的位置 */
-    width: 100%; /* 占满宽度 */
-    text-align: center; /* 居中对齐 */
-    font-size: 1.2rem; /* 字体大小，可根据需要调整 */
-    color: rgba(255, 255, 255, 0.5); /* 半透明白色 */
-    font-weight: bold;
-    letter-spacing: 2px; /* 增加字母间距 */
-    font-family: 'Arial', sans-serif; /* 字体，可根据需要调整 */
-    text-transform: uppercase; /* 全部大写 */
-    z-index: 10; /* 确保在其他内容上层 */
-    pointer-events: none; /* 让文本不可点击 */
+.skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-
-.fade-in-image {
-    opacity: 0; /* 初始透明 */
-    transition: opacity 4s ease-in-out; /* 渐变效果，2秒内完成 */
+.music {
+    position: relative;
 }
 
-.fade-in-image.visible {
-    opacity: 1; /* 最终显示 */
+.music-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-
-#random-quote {
-    font-style: italic; /* 使文本斜体显示 */
-    margin-top: 20px; /* 给文本和上方内容之间留一些空间 */
-    color: #888; /* 颜色可以根据需要调整 */
+.music-item {
+    border-radius: 24px;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, rgba(10, 17, 29, 0.75), rgba(10, 17, 29, 0.42));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    overflow: hidden;
 }
 
-
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.music-item::before {
+    content: "";
+    position: absolute;
+    inset: -50% -20%;
+    background: radial-gradient(circle, rgba(255, 77, 190, 0.35), transparent 60%);
+    transform: translate(-20%, -20%);
+    filter: blur(60px);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
 }
 
-/* Scroll Down 提示样式 */
+.music-item:hover {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 30px 60px rgba(7, 12, 40, 0.65);
+}
+
+.music-item:hover::before {
+    opacity: 1;
+}
+
+.music-item iframe {
+    width: 100%;
+    border-radius: 18px;
+    filter: saturate(1.1) contrast(1.05);
+}
+
+.contact-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: stretch;
+}
+
+.contact-card ul a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border 0.3s ease, color 0.3s ease;
+}
+
+.contact-card ul a:hover,
+.contact-card ul a:focus-visible {
+    color: var(--primary);
+    border-bottom-color: rgba(104, 241, 255, 0.5);
+}
+
+.contact-quote {
+    margin-top: 1.4rem;
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
+
+.map-wrap {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-media {
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    padding: 2rem 1.5rem 3rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+}
+
 .scroll-down {
     position: fixed;
-    bottom: 20px;
-    left: 0%;
+    bottom: 3rem;
+    left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    animation: fade-in 2s ease-in-out infinite;
-    z-index: 1000;
+    animation: fadeHint 3.5s ease-in-out infinite;
+    z-index: 9;
+    pointer-events: none;
 }
 
 .scroll-down .arrow {
     display: block;
-    width: 20px;
-    height: 20px;
-    border-left: 2px solid white;
-    border-bottom: 2px solid white;
+    width: 22px;
+    height: 22px;
+    border-left: 2px solid rgba(255, 255, 255, 0.7);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.7);
     transform: rotate(45deg);
     margin: 0 auto;
-    animation: bounce 1.5s infinite;
+    animation: bounce 1.8s infinite;
 }
 
 .scroll-down p {
-    font-size: 14px;
-    color: white;
-    margin-top: 5px;
-    font-family: Arial, sans-serif;
-    animation: fade-in-text 2s ease-in-out infinite;
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    color: rgba(255, 255, 255, 0.65);
 }
 
-/* 动画效果 */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1.1rem 1.6rem;
+    background: rgba(10, 17, 29, 0.88);
+    border: 1px solid rgba(104, 241, 255, 0.45);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 320px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    z-index: 20;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.toast-close:hover {
+    transform: scale(1.15);
+}
+
+@keyframes gradientShift {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.65;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes titleFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
 @keyframes bounce {
     0%, 100% {
         transform: translateY(0) rotate(45deg);
@@ -267,31 +645,89 @@ button:hover {
     }
 }
 
-@keyframes fade-in {
+@keyframes fadeHint {
     0%, 100% {
-        opacity: 0.5;
+        opacity: 0.25;
     }
     50% {
-        opacity: 1;
+        opacity: 0.9;
     }
 }
 
-@keyframes fade-in-text {
-    0%, 100% {
-        opacity: 0.5;
+@media (max-width: 1024px) {
+    header {
+        padding: 1rem 1.5rem;
     }
-    50% {
-        opacity: 1;
+
+    .navbar {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    }
+
+    .section {
+        padding-inline: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .hero-content {
+        padding: clamp(1.8rem, 5vw, 3rem);
+    }
+
+    .music-item {
+        padding: 1rem;
     }
 }
 
+@media (max-width: 768px) {
+    header {
+        backdrop-filter: blur(12px);
+    }
 
-/* 居中视频 */
-#works {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh; /* 让内容垂直居中 */
+    .section {
+        min-height: auto;
+        padding-block: clamp(4.5rem, 16vw, 7rem);
+    }
+
+    .hero-title {
+        font-size: clamp(2.2rem, 8vw, 3.2rem);
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .scroll-down {
+        display: none;
+    }
 }
 
+@media (max-width: 600px) {
+    body {
+        letter-spacing: 0.01em;
+    }
+
+    .nav-item {
+        padding: 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .nav-item span {
+        letter-spacing: 0.2em;
+    }
+
+    .hero-content {
+        border-radius: 22px;
+    }
+
+    .about-card,
+    .skill-card,
+    .contact-card,
+    .music-item {
+        border-radius: 20px;
+    }
+
+    .toast {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1.5rem;
+    }
+}
