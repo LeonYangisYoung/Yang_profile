@@ -1,198 +1,163 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人介绍网站</title>
+    <meta name="description" content="Leon Yang 的个人作品网站，展示 CCIT、交互设计、数字媒体与网页开发方向的作品和技能。">
+    <title>Leon Yang · Digital Experience Portfolio</title>
+    <link rel="preconnect" href="https://open.spotify.com">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 粒子动画画布 -->
-    <canvas id="particleCanvas"></canvas>
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
 
-    <!-- 全屏背景 -->
-    <div class="fullscreen-bg"></div>
-
-    <!-- 音乐播放列表 -->
-    <div class="music-gallery">
-        <div class="music-item">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1gk6N00YIaiM1YTfrSS5tM?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <div class="music-item">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3ev6XUmO76xaCVEYQEJphv?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <div class="music-item">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/46dLglMF9ginPDV3xCmhJc?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <div class="music-item">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0mdmKebVEP6sU8ZJajZDtP?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-    </div>
-
-    
-    <!-- 页脚 -->
-    <div class="footer-text">
-        A WORLD FAMILIARLY UNKNOWN
-    </div>
-
-    
-    <!-- 导航栏 -->
-    <header>
-        <nav class="navbar">
-            <a href="#home" class="nav-item">INDEX<br><span>首页</span></a>
-            <a href="#about" class="nav-item">ABOUT<br><span>关于我</span></a>
-            <a href="#works" class="nav-item">WORKS<br><span>作品集</span></a>
-            <a href="#skills" class="nav-item">SKILLS<br><span>技能</span></a>
-            <a href="#contact" class="nav-item">CONTACT<br><span>联系我</span></a>
+    <header class="site-header">
+        <a class="brand" href="#home" aria-label="回到首页">
+            <span class="brand-mark">LY</span>
+            <span class="brand-copy">Leon Yang</span>
+        </a>
+        <nav class="navbar" aria-label="主导航">
+            <a href="#home" class="nav-item">Index<span>首页</span></a>
+            <a href="#about" class="nav-item">About<span>关于我</span></a>
+            <a href="#works" class="nav-item">Works<span>作品集</span></a>
+            <a href="#skills" class="nav-item">Skills<span>技能</span></a>
+            <a href="#contact" class="nav-item">Contact<span>联系我</span></a>
         </nav>
     </header>
 
+    <main>
+        <section id="home" class="section hero-section">
+            <div class="hero-copy reveal">
+                <p class="eyebrow">Digital Media · Interaction Design · Front-End</p>
+                <h1>把技术变成体验，<span>把想法变成可触摸的界面。</span></h1>
+                <p class="hero-text">Hi, I’m Leon Yang — 多伦多大学 CCIT 学生，关注网页开发、交互设计与数字媒体。我喜欢用清晰的信息架构、沉浸式视觉和可用的代码，把概念落成真正能被体验的作品。</p>
+                <div class="hero-actions" aria-label="主要操作">
+                    <a class="button primary" href="#works">查看作品</a>
+                    <a class="button ghost" href="mailto:leonmon3ter@gmail.com">联系合作</a>
+                </div>
+            </div>
+            <aside class="hero-panel reveal" aria-label="个人网站概览">
+                <div class="panel-glow"></div>
+                <p class="panel-label">Current Focus</p>
+                <h2>Advanced Web Experiences</h2>
+                <p id="random-quote" class="quote">A WORLD FAMILIARLY UNKNOWN</p>
+                <div class="stat-grid">
+                    <div><strong>CCIT</strong><span>UofT Major</span></div>
+                    <div><strong>HCI</strong><span>Research Lens</span></div>
+                    <div><strong>UI/UX</strong><span>Design Practice</span></div>
+                </div>
+            </aside>
+        </section>
 
-    
-    <!-- 首页内容 -->
-    <section id="home" class="section">
+        <section id="about" class="section split-section">
+            <div class="section-copy reveal">
+                <p class="eyebrow">About</p>
+                <h2>关于我</h2>
+                <p>我目前在 University of Toronto 就读，主攻 IT 与 CCIT 方向。我的兴趣集中在数字媒体、信息技术、交互原型和新技术应用，希望把前沿科技转化成更自然、更有记忆点的用户体验。</p>
+                <div class="tag-row" aria-label="关注方向">
+                    <span>Digital Media</span>
+                    <span>Information Technology</span>
+                    <span>Immersive Prototype</span>
+                </div>
+            </div>
+            <div class="image-stack reveal">
+                <img src="OIP.jpg" alt="University of Toronto 标识" class="feature-image image-top">
+                <img src="CCIT.jpg" alt="CCIT 相关图片" class="feature-image image-bottom">
+            </div>
+        </section>
 
-        <h2>欢迎来到Leon Yang的个人网站</h2>
-        <p>Hi, I’m Yang — 一个在多伦多大学读 CCIT 的学生。
-    我喜欢把技术变成体验，把想法变成可以触摸的东西。
-    目前主要在做网页开发、交互设计和数字媒体，偶尔也会写点代码、做点沉浸式小实验。
-    我相信设计不仅是“好看”，更是“好用、好玩，也好记住”。
-    欢迎来看看我的作品，也欢迎来聊聊你的想法。</p>
-        
-        <p id="random-quote"></p> <!-- 用于显示随机句子的部分 -->
-    </section>
+        <section id="works" class="section works-section">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Featured Work</p>
+                <h2>观看我的视频</h2>
+                <p>一个关于视觉叙事与体验表达的作品片段。新的版式让视频成为焦点，同时保留沉浸式暗色氛围。</p>
+            </div>
+            <div class="video-card reveal">
+                <video controls preload="metadata" poster="utm.png">
+                    <source src="basepoint.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+        </section>
 
+        <section id="skills" class="section skills-section">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Capabilities</p>
+                <h2>技能矩阵</h2>
+            </div>
+            <div class="skills-grid">
+                <article class="skill-card reveal">
+                    <span class="skill-index">01</span>
+                    <h3>前端开发</h3>
+                    <ul>
+                        <li>HTML / CSS</li>
+                        <li>响应式页面结构</li>
+                        <li>交互动效基础</li>
+                    </ul>
+                </article>
+                <article class="skill-card reveal">
+                    <span class="skill-index">02</span>
+                    <h3>设计与原型</h3>
+                    <ul>
+                        <li>UI / UX Design</li>
+                        <li>Prototype Design</li>
+                        <li>Adobe XD</li>
+                    </ul>
+                </article>
+                <article class="skill-card reveal">
+                    <span class="skill-index">03</span>
+                    <h3>数字媒体研究</h3>
+                    <ul>
+                        <li>沉浸式环境</li>
+                        <li>人机交互 HCI</li>
+                        <li>符号学与心智模型</li>
+                        <li>Python 编程基础</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
 
-    
-    <!-- 关于我 -->
-    <section id="about" class="section">
-        <h2>关于我</h2>
-        <p>我目前在多伦多大学(University of Toronto)就读，专攻IT。对研究数字媒体与信息技术以及新技术应用充满热情，并期待未来的先进科技。</p>
-        <img src="OIP.jpg" alt="University of Toronto Logo" class="about-image">
-        <img src="CCIT.jpg" alt"about-image">
-    </section>
+        <section id="music" class="section music-section" aria-label="音乐播放列表">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Soundtrack</p>
+                <h2>灵感播放列表</h2>
+            </div>
+            <div class="music-gallery reveal">
+                <iframe title="Spotify track 1" src="https://open.spotify.com/embed/track/1gk6N00YIaiM1YTfrSS5tM?utm_source=generator" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                <iframe title="Spotify track 2" src="https://open.spotify.com/embed/track/3ev6XUmO76xaCVEYQEJphv?utm_source=generator" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                <iframe title="Spotify track 3" src="https://open.spotify.com/embed/track/46dLglMF9ginPDV3xCmhJc?utm_source=generator" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                <iframe title="Spotify track 4" src="https://open.spotify.com/embed/track/0mdmKebVEP6sU8ZJajZDtP?utm_source=generator" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </section>
 
+        <section id="contact" class="section contact-section">
+            <div class="contact-card reveal">
+                <p class="eyebrow">Contact</p>
+                <h2>联系我</h2>
+                <p>如果你想讨论网页、交互、数字媒体作品或任何有趣的想法，欢迎发消息给我。</p>
+                <div class="contact-links">
+                    <a href="mailto:leonmon3ter@gmail.com">leonmon3ter@gmail.com</a>
+                    <span>Wechat: Ashes_here_we_go</span>
+                    <a href="https://leonyangisyoung.github.io/Yang_profile/#home" target="_blank" rel="noopener">个人网站</a>
+                </div>
+                <blockquote>往日辉煌，暗淡如常。今日灵光，起源之梁。</blockquote>
+                <img src="dg.jpg" alt="数字媒体视觉图" class="contact-image">
+            </div>
+        </section>
+    </main>
 
-    
-    <!-- 项目经历 -->
- <section id="works" class="section">
-    <h2>观看我的视频</h2>
-    <video width="960" height="540" controls>
-        <source src="basepoint.mp4" type="video/mp4">
-        您的浏览器不支持视频播放。
-    </video>
-</section>
-
-
-
-    <!-- 技能 -->
-    <section id="skills" class="section">
-        <h2>技能</h2>
-        <ul><h3 class="skills-group-title">前端</h3>
-           <li>HTML/CSS”<li>
-               
-         <ul><h3 class="skills-group-title">设计</h3>
-             “UI/UX设计prototype设计 Adobe XD”</li>
-            
-         <ul><h3 class="skills-group-title">数字媒体其他</h3>
-            <li>沉浸式环境</li>
-             <li>人机交互HCI</li>
-            <li>符号学与心智模型</li>
-            <li>编程基础 (Python)</li>
-        </ul>
-    </section>
-
-
-    
-    <!-- 联系我 -->
-    <section id="contact" class="section">
-        <h2>联系我</h2>
-        <p>谷歌邮箱：leonmon3ter@gmail.com</p>
-        <p>微信Wechat: Ashes_here_we_go</p>
-        <p>在社交媒体上关注我:<p>
-        <p>个人网站: <a href="https://leonyangisyoung.github.io/Yang_profile/#home">leonyangisyoung.github.io/Yang_profile/#home</p>
-        <p>往日辉煌，暗淡如常。今日灵光，起源之梁。</p>
-        <img src="dg.jpg" alt="utm Logo" class="about-image">
-    </section>
-
-    <footer>
-        <p>© 2024 Yang的个人网站</p>
-    </footer>
-
-
-
-
-
-    
-    <!-- 引入 JavaScript -->
-    <script src="scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // 粒子动画的 JavaScript 代码
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        const particles = new THREE.BufferGeometry();
-        const particleCount = 500;
-        const positions = [];
-        for (let i = 0; i < particleCount * 3; i++) {
-            positions.push((Math.random() - 0.5) * 10);
-        }
-        particles.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-
-        const particleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
-        const particleSystem = new THREE.Points(particles, particleMaterial);
-        scene.add(particleSystem);
-
-        camera.position.z = 5;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            particleSystem.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
-</body>
-</html>
-
-
-
-    <!-- Scroll Down 提示 -->
-    <div class="scroll-down">
+    <div class="footer-text" aria-hidden="true">A WORLD FAMILIARLY UNKNOWN</div>
+    <div class="scroll-down" aria-hidden="true">
         <span class="arrow"></span>
-        <p>Scroll Down</p>
+        <p>Scroll</p>
     </div>
 
-    <script>
-        // 自动隐藏 Scroll Down 提示
-      //   document.addEventListener("scroll", function () {
-         //    const scrollDown = document.querySelector(".scroll-down");
-       //      if (window.scrollY > 300) {
-         //        scrollDown.style.display = "none"; // 隐藏提示
-        //     } else {
-        //         scrollDown.style.display = "block"; // 显示提示
-    //         }
-     //    });
-    </script>
+    <footer>
+        <p>© 2026 Leon Yang · Designed for modern digital experiences.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
-
-  <section class="card">
-        <h2>Location</h2>
-        <p>Usually around University of Toronto Mississauga.</p>
-        <!-- Simple Google Maps embed -->
-        <div class="map-wrap">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.803532893118!2d-79.6622492238535!3d43.54711025951147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b469dc8a5fbf1%3A0xb47b5cc6fde93590!2sUniversity%20of%20Toronto%20Mississauga!5e0!3m2!1sen!2sca!4v1731350000000"
-                width="100%" height="230" style="border:0;" allowfullscreen=""
-                loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
-
-
-
